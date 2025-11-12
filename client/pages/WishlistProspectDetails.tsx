@@ -577,7 +577,13 @@ export default function WishlistProspectDetails() {
     );
   }
 
-  const prospectData = initialProspectsData;
+  const prospectData = useMemo(() => {
+    if (!currentList || !currentList.prospects) {
+      return [];
+    }
+    const prospectIdsInList = new Set(currentList.prospects);
+    return initialProspectsData.filter(prospect => prospectIdsInList.has(prospect.id));
+  }, [currentList]);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
