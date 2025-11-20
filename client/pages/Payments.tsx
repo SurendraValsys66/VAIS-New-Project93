@@ -33,6 +33,7 @@ import {
   Wifi,
   Shield,
   Landmark,
+  Edit2,
 } from "lucide-react";
 import {
   AlertDialog,
