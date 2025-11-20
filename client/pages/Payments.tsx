@@ -385,13 +385,22 @@ function ModernPaymentCard({
                 </p>
                 {method.isDefault && (
                   <div className="mt-2">
-                    <span
-                      className="inline-flex items-center gap-1.5 bg-green-100 text-green-700 font-semibold px-2.5 py-1 rounded-full border border-green-300"
-                      style={{ fontSize: "11px" }}
-                    >
-                      <span className="inline-flex h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse"></span>
-                      Autopay enabled
-                    </span>
+                    <div className="inline-flex items-center gap-2 bg-green-100 px-2.5 py-1 rounded-full border border-green-300">
+                      <span
+                        className="inline-flex items-center gap-1.5 text-green-700 font-semibold"
+                        style={{ fontSize: "11px" }}
+                      >
+                        <span className="inline-flex h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                        Autopay
+                      </span>
+                      <Switch
+                        checked={method.autopayEnabled}
+                        onCheckedChange={(checked) =>
+                          onAutopayChange(method.id, checked)
+                        }
+                        className="h-4 w-8"
+                      />
+                    </div>
                   </div>
                 )}
               </div>
