@@ -115,19 +115,30 @@ export function AddPaymentMethodDialog({
   open,
   onOpenChange,
   onAdd,
+  editingMethod,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onAdd: (method: PaymentMethod) => void;
+  editingMethod?: PaymentMethod;
 }) {
-  const [paymentType, setPaymentType] = useState<"card" | "paypal">("card");
+  const isEditMode = !!editingMethod;
+  const initialPaymentType: "card" | "paypal" = editingMethod
+    ? editingMethod.type === "paypal"
+      ? "paypal"
+      : "card"
+    : "card";
+
+  const [paymentType, setPaymentType] = useState<"card" | "paypal">(
+    initialPaymentType,
+  );
   const [formData, setFormData] = useState<AddPaymentFormData>({
-    cardholderName: "",
-    cardNumber: "",
-    expiryDate: "",
+    cardholderName: editingMethod?.cardholderName || "",
+    cardNumber: editingMethod?.cardNumber || "",
+    expiryDate: editingMethod?.expiryDate || "",
     cvc: "",
     country: "United States",
-    paypalEmail: "",
+    paypalEmail: editingMethod?.type === "paypal" ? editingMethod.cardNumber : "",
   });
   const [errors, setErrors] = useState<ValidationError[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
