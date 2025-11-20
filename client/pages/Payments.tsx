@@ -583,14 +583,25 @@ function AddPaymentMethodDialog({
           </AccordionItem>
 
           <AccordionItem value="paypal">
-            <AccordionTrigger className="text-lg font-semibold">
+            <AccordionTrigger className="text-base font-semibold hover:no-underline py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors">
               <div className="flex items-center gap-3">
-                <Landmark className="w-5 h-5" />
-                <span>PayPal</span>
+                <div className="flex items-center justify-center w-10 h-10 bg-blue-50 rounded-lg">
+                  <svg
+                    className="w-5 h-5 text-blue-600"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M9.5 2a1 1 0 0 0-.979.905L8.032 8H3a1 1 0 0 0 0 2h4.543L7.23 18.095a1 1 0 0 0 .979.905H20a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1h-10.5z" />
+                  </svg>
+                </div>
+                <div className="text-left">
+                  <p className="font-semibold text-gray-900">PayPal</p>
+                  <p className="text-xs text-gray-500">Fast and secure</p>
+                </div>
               </div>
             </AccordionTrigger>
             <AccordionContent>
-              <div className="space-y-4 pt-4">
+              <div className="space-y-5 pt-4 pb-4">
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
                     PayPal Email
@@ -605,11 +616,11 @@ function AddPaymentMethodDialog({
                         paypalEmail: e.target.value,
                       })
                     }
-                    className="h-10"
+                    className="h-11"
                   />
                 </div>
 
-                <DialogFooter className="pt-4">
+                <DialogFooter className="pt-2">
                   <Button variant="outline" onClick={() => onOpenChange(false)}>
                     Cancel
                   </Button>
