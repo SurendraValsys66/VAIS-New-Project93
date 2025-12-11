@@ -439,6 +439,7 @@ export default function ABMLAL() {
     date: string;
     type: string;
   } | null>(null);
+  const [showFeedbackModal, setShowFeedbackModal] = useState(false);
 
   const { startTour } = useTour();
 
