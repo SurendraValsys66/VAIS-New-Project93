@@ -106,12 +106,6 @@ export function VAISFeedbackModal({
               <span>Totally satisfied</span>
             </div>
 
-            {/* Subtext */}
-            <p className="text-xs text-gray-500">
-              Your feedback helps us improve our service.
-              <br />
-              Please share your thoughts and suggestions below.
-            </p>
           </div>
 
           {/* Comment Input */}
