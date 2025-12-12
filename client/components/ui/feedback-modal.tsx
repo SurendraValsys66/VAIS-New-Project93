@@ -40,6 +40,14 @@ export function FeedbackModal({ open, onOpenChange }: FeedbackModalProps) {
       <DialogContent className="max-w-sm bg-white">
         <div className="flex items-center justify-between pb-4 border-b border-gray-200 -mx-6 px-6">
           <h2 className="text-xl font-semibold text-gray-900">Rate your experience! 👋</h2>
+          <DialogClose asChild>
+            <button
+              className="inline-flex items-center justify-center rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100 h-6 w-6 transition-colors"
+              aria-label="Close"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </DialogClose>
         </div>
 
         <div className="space-y-6">
