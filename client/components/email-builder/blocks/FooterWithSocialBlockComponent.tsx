@@ -50,8 +50,23 @@ export const FooterWithSocialBlockComponent: React.FC<
           className={`py-4 px-2 cursor-pointer hover:bg-gray-50 rounded transition-all ${
             selectedElement === "social" ? "ring-2 ring-valasys-orange" : ""
           }`}
+          style={{
+            width: block.social.widthUnit === "%"
+              ? `${block.social.width}%`
+              : `${block.social.width}px`,
+            margin: block.social.alignment === "center"
+              ? "0 auto"
+              : block.social.alignment === "right"
+              ? "0 0 0 auto"
+              : undefined,
+          }}
         >
-          <div className="flex flex-wrap justify-center gap-2">
+          <div
+            className={`flex flex-wrap gap-2`}
+            style={{
+              justifyContent: block.social.alignment === "left" ? "flex-start" : block.social.alignment === "center" ? "center" : "flex-end",
+            }}
+          >
             {block.social.platforms.map((platform, index) => {
               const iconColor = getIconColor(platform.icon);
               const iconBg = getIconBackgroundColor(
@@ -79,6 +94,7 @@ export const FooterWithSocialBlockComponent: React.FC<
                   style={{
                     backgroundColor: iconBg,
                     color: iconColor,
+                    marginRight: index < block.social.platforms.length - 1 ? `${block.social.spacing}px` : "0",
                   }}
                 >
                   {getSocialIcon(platform.icon)}
